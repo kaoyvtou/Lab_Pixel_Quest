@@ -4,7 +4,7 @@ using System.Net.Security;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class NewBehaviourScript : MonoBehaviour
+public class NewBehaviour : MonoBehaviour
 {
     Rigidbody2D rb;
     public float speed = 3;
@@ -19,8 +19,11 @@ public class NewBehaviourScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float xInput = Input.GetAxis("Horizontal");
+        float xInput = Input.GetAxis("Vertical");
         rb.velocity = new Vector2(xInput * speed, rb.velocity.y);
+
+        float yInput = Input.GetAxis("Horizontal");
+        rb.velocity = new Vector2(yInput * speed, rb.velocity.x);
     }
         private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -43,7 +46,7 @@ public class NewBehaviourScript : MonoBehaviour
                 }
             case "Finish":
                 {
-                    SceneManager.LoadScene("LV1");
+                    SceneManager.LoadScene("LV2");
                     break;
                 }
             case "Teleport":
